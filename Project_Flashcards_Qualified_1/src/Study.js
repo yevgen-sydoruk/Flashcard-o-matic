@@ -76,16 +76,16 @@ function Study() {
                                 <div className="card-title">
                                     {`Card ${index + 1} of ${cards.length}`}
                                 </div>
-                                <div className="card-text">
+                                <div className="card-text mb-3">
                                     {front ? card.front : card.back}
                                 </div>
                                 <button
-                                    className="btn btn-secondary"
+                                    className="btn btn-secondary mr-2"
                                     onClick={flipCard}
                                 >
                                     Flip
                                 </button>
-                                {showNextBtn(card, index)}
+                                {showNextBtn(cards, index)}
                             </div>
                         );
                     }
@@ -104,7 +104,7 @@ function Study() {
                 </p>
                 <Link
                     to={`/decks/${deck.id}/cards/new`}
-                    className="btn btn-primary mx-1"
+                    className="btn btn-primary"
                 >
                     Add Cards
                 </Link>

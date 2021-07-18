@@ -41,34 +41,33 @@ You will not be able to recover it.`
             </Link>
             <div className="card-deck">
                 {decks.map((deck) => {
-                    console.log(`${deck.name}`);
                     return (
                         <div>
                             <article className="card m-1" key={deck.id}>
                                 <div className="card-body">
-                                    <div classsName="card-title">
+                                    <div className="card-title mb-2">
                                         {deck.name}
                                     </div>
                                     <div className="card-subtitle mb-2 text-muted">
                                         {deck.cards.length} cards
                                     </div>
-                                    <div className="card-text">
+                                    <div className="card-text mb-2">
                                         {deck.description}
                                     </div>
                                     <Link
-                                        className="btn btn-secondary mx-1"
+                                        className="btn btn-secondary mr-2"
                                         to={`/decks/${deck.id}`}
                                     >
                                         View
                                     </Link>
                                     <Link
-                                        className="btn btn-primary mx-1"
+                                        className="btn btn-primary mr-2"
                                         to={`/decks/${deck.id}/study`}
                                     >
                                         Study
                                     </Link>
                                     <button
-                                        className="btn btn-danger mx-1"
+                                        className="btn btn-danger"
                                         type="button"
                                         onClick={() => handleDelete(deck)}
                                     >

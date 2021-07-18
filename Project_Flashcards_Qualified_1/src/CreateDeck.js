@@ -71,12 +71,12 @@ function CreateDeck() {
                     ></textarea>
                 </div>
                 <button
-                    className="btn btn-secondary mx-1"
+                    className="btn btn-secondary mr-2"
                     onClick={() => handleCancelButton()}
                 >
                     Cancel
                 </button>
-                <button className="btn btn-primary mx-1" type="submit">
+                <button className="btn btn-primary" type="submit">
                     Submit
                 </button>
             </form>
