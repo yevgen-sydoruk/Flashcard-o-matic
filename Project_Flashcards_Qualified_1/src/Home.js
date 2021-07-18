@@ -6,16 +6,10 @@ function Home() {
     const [decks, setDecks] = useState([]);
     const history = useHistory();
 
-    async function handleDelete(deck) {
-        const abortController = new AbortController();
-        history.go("/"); //Set to 0?
-        return await deleteDeck(deck.id, abortController.signal); //check if signal needed
-    }
-
     useEffect(() => {
         async function fetchData() {
             const abortController = new AbortController();
-            listDecks();
+            // listDecks();
             try {
                 const response = await listDecks(abortController.signal);
                 setDecks(response);
@@ -27,15 +21,23 @@ function Home() {
         fetchData();
     }, []);
 
+    async function handleDelete(deck) {
+        const abortController = new AbortController();
+        history.go("/"); //Set to 0?
+        return await deleteDeck(deck.id, abortController.signal); //check if signal needed
+    }
+
     return (
         <div className="container">
-            <Link to="decks/new">+ Creacte Deck</Link>
+            <Link className="btn btn-secondary mb-2" to="decks/new">
+                + Creacte Deck
+            </Link>
             <div className="card-deck">
                 {decks.map((deck) => {
                     console.log(`${deck.name}`);
                     return (
                         <div>
-                            <article cllassName="card" key={deck.id}>
+                            <article className="card" key={deck.id}>
                                 <div className="card-body">
                                     <div classsName="card-title">
                                         {deck.name}
@@ -46,10 +48,20 @@ function Home() {
                                     <div className="card-text">
                                         {deck.description}
                                     </div>
-                                    <Link className="btn">View</Link>
-                                    <Link className="btn">Study</Link>
+                                    <Link
+                                        className="btn btn-secondary mx-1"
+                                        to={`/decks/${deck.id}`}
+                                    >
+                                        View
+                                    </Link>
+                                    <Link
+                                        className="btn btn-primary"
+                                        to={`/decks/${deck.id}/study`}
+                                    >
+                                        Study
+                                    </Link>
                                     <button
-                                        className="btn"
+                                        className="btn btn-danger"
                                         type="button"
                                         onClick={() => handleDelete(deck)}
                                     >
