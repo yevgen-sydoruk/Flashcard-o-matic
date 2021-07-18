@@ -1,34 +1,14 @@
 {
   "decks": [
     {
-      "name": "Thinkful",
-      "description": "New ddeck",
-      "id": 1
-    },
-    {
       "name": "1",
       "description": "2",
       "id": 2
     },
     {
-      "name": "4",
-      "description": "5",
-      "id": 4
-    },
-    {
       "name": "qwerty",
       "description": "qweqww",
       "id": 5
-    },
-    {
-      "name": "sasdas",
-      "description": "asdasdas",
-      "id": 6
-    },
-    {
-      "name": "11",
-      "description": "22",
-      "id": 7
     },
     {
       "name": "er",
@@ -41,25 +21,34 @@
       "id": 9
     },
     {
-      "name": "qq",
-      "description": "qq",
-      "id": 10
-    },
-    {
       "name": "ww",
       "description": "ww",
       "id": 11
     },
     {
-      "name": "rrrr",
-      "description": "rrrr",
-      "id": 12
-    },
-    {
       "name": "REACT Router",
-      "description": "SOME description to test the functionality",
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo ullam, omnis sapiente amet unde corrupti, cumque possimus quae eius eligendi quasi consectetur nisi, harum temporibus iusto? Labore et at illum.Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo ullam, omnis sapiente amet unde corrupti, cumque possimus quae eius eligendi quasi consectetur nisi, harum temporibus iusto? Labore et at illum.Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo ullam, omnis sapiente amet unde corrupti, cumque possimus quae eius eligendi quasi consectetur nisi, harum temporibus iusto? Labore et at illum.",
       "id": 13
     }
   ],
-  "cards": []
+  "cards": [
+    {
+      "front": "First card\n",
+      "back": "Some desc",
+      "deckId": 13,
+      "id": 1
+    },
+    {
+      "front": "next card",
+      "back": "Some desct for 2",
+      "deckId": 13,
+      "id": 2
+    },
+    {
+      "front": "third",
+      "back": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo ullam, omnis sapiente amet unde corrupti, cumque possimus quae eius eligendi quasi consectetur nisi, harum temporibus iusto? Labore et at illum.Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo ullam, omnis sapiente amet unde corrupti, cumque possimus quae eius eligendi quasi consectetur nisi, harum temporibus iusto? Labore et at illum.Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo ullam, omnis sapiente amet unde corrupti, cumque possimus quae eius eligendi quasi consectetur nisi, harum temporibus iusto? Labore et at illum.",
+      "deckId": 13,
+      "id": 3
+    }
+  ]
 }

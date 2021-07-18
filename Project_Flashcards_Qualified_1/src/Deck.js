@@ -122,23 +122,23 @@ function Deck() {
             <h2>Cards</h2>
             {cards.map((card) => {
                 return (
-                    <div className="card-deck" key={card.id}>
+                    <div className="card-deck mb-2" key={card.id}>
                         <div className="card">
                             <div className="card-body">
-                                <div className="row">
+                                <div className="row mb-2">
                                     <div className="col">{card.front}</div>
                                     <div className="col">{card.back}</div>
                                 </div>
                                 <div className="container row">
                                     <button
                                         onClick={() => handleEditCard(card)}
-                                        className="btn btn-secondary mx-1"
+                                        className="btn btn-secondary mr-2"
                                     >
                                         Edit
                                     </button>
                                     <button
                                         onClick={() => handleDeleteCard(card)}
-                                        className="btn btn-danger mx-1"
+                                        className="btn btn-danger"
                                     >
                                         Delete
                                     </button>
@@ -150,16 +150,8 @@ function Deck() {
             })}
         </div>
     );
-    // } else {
-    //     return (
-    //         <button
-    //             onClick={() => handleAddCard()}
-    //             className="btn btn-primary mx-1"
-    //         >
-    //             Add Cards
-    //         </button>
-    //     ); //add an option to add cards DONE
-    // }
 }
 
 export default Deck;
+
+//Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo ullam, omnis sapiente amet unde corrupti, cumque possimus quae eius eligendi quasi consectetur nisi, harum temporibus iusto? Labore et at illum.
