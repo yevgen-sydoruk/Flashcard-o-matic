@@ -3,8 +3,8 @@ import { readDeck } from "./utils/api/index";
 import { useHistory, Link, useParams } from "react-router-dom";
 
 function Study() {
-    const { deckId } = useParams;
-    const history = useHistory;
+    const { deckId } = useParams();
+    const history = useHistory();
     //The path to this screen should include the deckId (i.e., /decks/:deckId/study).
 
     const [deck, setDeck] = useState({});

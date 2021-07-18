@@ -25,7 +25,7 @@ function Layout() {
                     <Route path="/decks/new">
                         <CreateDeck></CreateDeck>
                     </Route>
-                    <Route path="/decks/:deckId" /*exact?*/>
+                    <Route exact path="/decks/:deckId" /*exact?*/>
                         <Deck></Deck>
                     </Route>
                     <Route path="/decks/:deckId/edit">

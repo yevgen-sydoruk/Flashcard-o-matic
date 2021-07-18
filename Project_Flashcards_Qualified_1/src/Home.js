@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Switch, Route, Link, useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { deleteDeck, listDecks } from "./utils/api/index";
 
 function Home() {
@@ -9,12 +9,11 @@ function Home() {
     useEffect(() => {
         async function fetchData() {
             const abortController = new AbortController();
-            // listDecks();
             try {
                 const response = await listDecks(abortController.signal);
                 setDecks(response);
             } catch (error) {
-                console.log(error, "Can`t do that..."); //Update the error message
+                console.log(error, "Error");
             }
             return () => abortController.abort();
         }
@@ -22,9 +21,17 @@ function Home() {
     }, []);
 
     async function handleDelete(deck) {
-        const abortController = new AbortController();
-        history.go("/"); //Set to 0?
-        return await deleteDeck(deck.id, abortController.signal); //check if signal needed
+        if (
+            window.confirm(
+                `Delete this deck?  
+                
+You will not be able to recover it.`
+            )
+        ) {
+            const abortController = new AbortController();
+            history.go("/");
+            return await deleteDeck(deck.id, abortController.signal); //check if signal needed
+        }
     }
 
     return (
@@ -37,12 +44,12 @@ function Home() {
                     console.log(`${deck.name}`);
                     return (
                         <div>
-                            <article className="card" key={deck.id}>
+                            <article className="card m-1" key={deck.id}>
                                 <div className="card-body">
                                     <div classsName="card-title">
                                         {deck.name}
                                     </div>
-                                    <div className="card-subtitle">
+                                    <div className="card-subtitle mb-2 text-muted">
                                         {deck.cards.length} cards
                                     </div>
                                     <div className="card-text">
@@ -55,13 +62,13 @@ function Home() {
                                         View
                                     </Link>
                                     <Link
-                                        className="btn btn-primary"
+                                        className="btn btn-primary mx-1"
                                         to={`/decks/${deck.id}/study`}
                                     >
                                         Study
                                     </Link>
                                     <button
-                                        className="btn btn-danger"
+                                        className="btn btn-danger mx-1"
                                         type="button"
                                         onClick={() => handleDelete(deck)}
                                     >

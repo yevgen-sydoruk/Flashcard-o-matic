@@ -80,94 +80,86 @@ function Deck() {
         }
     }
 
-    if (cards.length > 0) {
-        return (
+    // if (cards.length > 0) {
+    return (
+        <div>
+            <ol className="breadcrumb">
+                <li className="breadcrumb-item">
+                    <Link to="/">Home</Link>
+                </li>
+                <li className="breadcrumb-item">{deck.name}</li>
+            </ol>
             <div>
-                <ol className="breadcrumb">
-                    <li className="breadcrumb-item">
-                        <Link to="/">Home</Link>
-                    </li>
-                    <li className="breadcrumb-item">{deck.name}</li>
-                </ol>
-                <div className="card">
-                    <div className="card-body">
-                        <h2 className="card-title">{deck.name}</h2>
-                        <p>{deck.description}</p>
-                        <button
-                            onClick={() => handleEditDeck()}
-                            className="btn btn-secondary mx-1"
-                        >
-                            Edit
-                        </button>
-                        <button
-                            onClick={() => handleStudy()}
-                            className="btn btn-primary mx-1"
-                        >
-                            Study
-                        </button>
-                        <button
-                            onClick={() => handleAddCard()}
-                            className="btn btn-primary mx-1"
-                        >
-                            Add Cards
-                        </button>
-                        <button
-                            onClick={() => handleDeleteDeck(deck)}
-                            className="btn btn-danger mx-1"
-                        >
-                            Delete
-                        </button>
-                    </div>
-                    <h2>Cards</h2>
-                    {cards.map((card) => {
-                        return (
-                            <div className="card-deck" key={card.id}>
-                                <div className="card">
-                                    <div className="card-body">
-                                        <div className="row">
-                                            <div className="col">
-                                                {card.front}
-                                            </div>
-                                            <div className="col">
-                                                {card.back}
-                                            </div>
-                                        </div>
-                                        <div className="container row">
-                                            <button
-                                                onClick={() =>
-                                                    handleEditCard(card)
-                                                }
-                                                className="btn btn-secondary mx-1"
-                                            >
-                                                Edit
-                                            </button>
-                                            <button
-                                                onClick={() =>
-                                                    handleDeleteCard(card)
-                                                }
-                                                className="btn btn-danger mx-1"
-                                            >
-                                                Delete
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        );
-                    })}
+                <div className="mb-3">
+                    <h3>{deck.name}</h3>
+                    <p>{deck.description}</p>
+                    <button
+                        onClick={() => handleEditDeck()}
+                        className="btn btn-secondary mr-1"
+                    >
+                        Edit
+                    </button>
+                    <button
+                        onClick={() => handleStudy()}
+                        className="btn btn-primary mx-1"
+                    >
+                        Study
+                    </button>
+                    <button
+                        onClick={() => handleAddCard()}
+                        className="btn btn-primary mx-1"
+                    >
+                        Add Cards
+                    </button>
+                    <button
+                        onClick={() => handleDeleteDeck(deck)}
+                        className="btn btn-danger mx-1"
+                    >
+                        Delete
+                    </button>
                 </div>
             </div>
-        );
-    } else {
-        return (
-            <button
-                onClick={() => handleAddCard()}
-                className="btn btn-primary mx-1"
-            >
-                Add Cards
-            </button>
-        ); //add an option to add cards DONE
-    }
+            <h2>Cards</h2>
+            {cards.map((card) => {
+                return (
+                    <div className="card-deck" key={card.id}>
+                        <div className="card">
+                            <div className="card-body">
+                                <div className="row">
+                                    <div className="col">{card.front}</div>
+                                    <div className="col">{card.back}</div>
+                                </div>
+                                <div className="container row">
+                                    <button
+                                        onClick={() => handleEditCard(card)}
+                                        className="btn btn-secondary mx-1"
+                                    >
+                                        Edit
+                                    </button>
+                                    <button
+                                        onClick={() => handleDeleteCard(card)}
+                                        className="btn btn-danger mx-1"
+                                    >
+                                        Delete
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                );
+            })}
+        </div>
+    );
+    // } else {
+    //     return (
+    //         <button
+    //             onClick={() => handleAddCard()}
+    //             className="btn btn-primary mx-1"
+    //         >
+    //             Add Cards
+    //         </button>
+    //     ); //add an option to add cards DONE
+    // }
 }
 
 export default Deck;

@@ -12,15 +12,16 @@ function CreateDeck() {
 
     async function handleSubmit(event) {
         // console.log(event.target);
-        //THE SUBMIT BUTTON SHOULD LEAD TO DECK SCREEN, NOT HOME
+        //THE SUBMIT BUTTON SHOULD LEAD TO DECK SCREEN, NOT HOME DONE
         event.preventDefault();
         const abortController = new AbortController();
         const response = await createDeck(
             { ...newDeck },
             abortController.signal
         );
-        console.log(response.id);
-        history.push("/");
+        // console.log("here", response.id);
+        history.push(`/decks/${response.id}`);
+        // history.push("/");
         return response;
     }
 
@@ -45,26 +46,39 @@ function CreateDeck() {
             </ol>
             <form onSubmit={(event) => handleSubmit(event)}>
                 <h1>Create Deck</h1>
-                <label for="name">Name</label>
-                <input
-                    id="name"
-                    name="name"
-                    type="text"
-                    placeholder="Deck Name"
-                    value={newDeck.name}
-                    onChange={handleChange}
-                ></input>
-                <label for="description">Description</label>
-                <textarea
-                    id="description"
-                    name="description"
-                    type="textarea"
-                    placeholder="Brief description of the deck"
-                    value={newDeck.description}
-                    onChange={handleChange}
-                ></textarea>
-                <button onClick={() => handleCancelButton()}>Cancel</button>
-                <button type="submit">Submit</button>
+                <div className="form-group">
+                    <label for="name">Name</label>
+                    <input
+                        id="name"
+                        name="name"
+                        type="text"
+                        placeholder="Deck Name"
+                        value={newDeck.name}
+                        onChange={handleChange}
+                        className="form-control"
+                    ></input>
+                </div>
+                <div className="form-group">
+                    <label for="description">Description</label>
+                    <textarea
+                        id="description"
+                        name="description"
+                        type="textarea"
+                        placeholder="Brief description of the deck"
+                        value={newDeck.description}
+                        onChange={handleChange}
+                        className="form-control"
+                    ></textarea>
+                </div>
+                <button
+                    className="btn btn-secondary mx-1"
+                    onClick={() => handleCancelButton()}
+                >
+                    Cancel
+                </button>
+                <button className="btn btn-primary mx-1" type="submit">
+                    Submit
+                </button>
             </form>
         </div>
     );
