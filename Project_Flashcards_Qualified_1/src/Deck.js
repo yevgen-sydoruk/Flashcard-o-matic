@@ -24,7 +24,7 @@ function Deck() {
             };
         }
         fetchData();
-    }, []);
+    }, [deckId]);
 
     async function handleEditDeck() {
         history.push(`/decks/${deckId}/edit`);

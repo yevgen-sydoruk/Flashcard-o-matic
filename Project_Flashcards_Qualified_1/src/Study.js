@@ -21,9 +21,9 @@ function Study() {
             return () => {
                 abortController.abort();
             };
-        }
-        fetchDeck();
-    }, []);
+        } //if deckid ? fetchDeck
+        if (deckId) fetchDeck();
+    }, [deckId]);
 
     function nextCard(index, cardsTotal) {
         if (index < cardsTotal) {
@@ -67,29 +67,28 @@ function Study() {
     }
 
     function enoughCards() {
+        const card = cards.find((card, index) => index === cardNumber - 1);
+        // const index = cards.findIndex(
+        //     (card, index) => index === cardNumber - 1
+        // );
         return (
             <div className="card">
-                {cards.map((card, index) => {
-                    if (index === cardNumber - 1) {
-                        return (
-                            <div className="card-body" key={card.id}>
-                                <div className="card-title">
-                                    {`Card ${index + 1} of ${cards.length}`}
-                                </div>
-                                <div className="card-text mb-3">
-                                    {front ? card.front : card.back}
-                                </div>
-                                <button
-                                    className="btn btn-secondary mr-2"
-                                    onClick={flipCard}
-                                >
-                                    Flip
-                                </button>
-                                {showNextBtn(cards, index)}
-                            </div>
-                        );
-                    }
-                })}
+                <div className="card-body" key={card.id}>
+                    <div className="card-title">
+                        {`Card ${cardNumber} of ${cards.length}`}
+                    </div>
+                    <div className="card-text mb-3">
+                        {front ? card.front : card.back}
+                    </div>
+                    <button
+                        className="btn btn-secondary mr-2"
+                        onClick={flipCard}
+                    >
+                        Flip
+                    </button>
+                    {/* {showNextBtn(cards, index)} */}
+                    {showNextBtn(cards, cardNumber - 1)}
+                </div>
             </div>
         );
     }

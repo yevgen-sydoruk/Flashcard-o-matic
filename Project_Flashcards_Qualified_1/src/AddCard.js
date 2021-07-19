@@ -28,7 +28,7 @@ function AddCard() {
             };
         }
         fetchData();
-    }, []);
+    }, [deckId]);
 
     function handleChange({ target }) {
         setNewCard({

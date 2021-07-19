@@ -27,7 +27,7 @@ function EditDeck() {
             };
         }
         fetchData();
-    }, []);
+    }, [deckId]);
 
     async function handleSubmit(event) {
         event.preventDefault();

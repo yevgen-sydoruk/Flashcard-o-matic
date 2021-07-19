@@ -47,7 +47,7 @@ function CreateDeck() {
             <form onSubmit={(event) => handleSubmit(event)}>
                 <h1>Create Deck</h1>
                 <div className="form-group">
-                    <label for="name">Name</label>
+                    <label htmlFor="name">Name</label>
                     <input
                         id="name"
                         name="name"
@@ -59,7 +59,7 @@ function CreateDeck() {
                     ></input>
                 </div>
                 <div className="form-group">
-                    <label for="description">Description</label>
+                    <label htmlFor="description">Description</label>
                     <textarea
                         id="description"
                         name="description"

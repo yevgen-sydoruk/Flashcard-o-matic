@@ -42,7 +42,7 @@ You will not be able to recover it.`
             <div className="card-deck">
                 {decks.map((deck) => {
                     return (
-                        <div>
+                        <div key={deck.id}>
                             <article className="card m-1" key={deck.id}>
                                 <div className="card-body">
                                     <div className="card-title mb-2">

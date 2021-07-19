@@ -43,7 +43,7 @@ function EditCard() {
             };
         }
         fetchData();
-    }, []);
+    }, [deckId, cardId]);
 
     function handleChange({ target }) {
         setCard({
