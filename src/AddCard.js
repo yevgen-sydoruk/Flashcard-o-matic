@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { createCard, readDeck } from "./utils/api/index";
 import { Link, useHistory, useParams } from "react-router-dom";
+import Form from "./Form";
 
 function AddCard() {
     const { deckId } = useParams();
     const history = useHistory();
+    const isNewCard = true;
 
     const setup = {
         front: "",
@@ -65,42 +67,7 @@ function AddCard() {
                 </li>
                 <li className="breadcrumb-item active">Add Card</li>
             </ol>
-            <form onSubmit={handleSubmit}>
-                <h2>{deck.name}: Add Card</h2>
-                <div className="form-group">
-                    <label>Front</label>
-                    <textarea
-                        id="front"
-                        name="front"
-                        className="form-control"
-                        onChange={handleChange}
-                        type="textarea"
-                        placeholder="Front side of card"
-                        value={newCard.front}
-                    />
-                </div>
-                <div className="form-group">
-                    <label>Back</label>
-                    <textarea
-                        id="back"
-                        name="back"
-                        className="form-control"
-                        onChange={handleChange}
-                        type="textarea"
-                        placeholder="Back side of card"
-                        value={newCard.back}
-                    />
-                </div>
-                <button
-                    className="btn btn-secondary mr-2"
-                    onClick={() => handleDone()}
-                >
-                    Done
-                </button>
-                <button className="btn btn-primary" type="submit">
-                    Save
-                </button>
-            </form>
+            <Form isNewCard={isNewCard} deck={deck} handleSubmitClick={handleSubmit} handleChange={handleChange} newCard={newCard} handleShow={handleDone}></Form>
         </div>
     );
 }

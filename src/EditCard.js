@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { readCard, readDeck, updateCard } from "./utils/api/index";
 import { Link, useHistory, useParams } from "react-router-dom";
+import Form from "./Form";
 
 function EditCard() {
     const { deckId, cardId } = useParams();
     const history = useHistory();
+    const isNewCard = false;
 
     const deckSetup = {
         id: "",
@@ -75,40 +77,7 @@ function EditCard() {
                 </li>
                 <li className="breadcrumb-item active">Edit Card {cardId}</li>
             </ol>
-            <form onSubmit={handleSubmit}>
-                <h2>Edit Card</h2>
-                <div className="form-group">
-                    <label>Front</label>
-                    <textarea
-                        id="front"
-                        name="front"
-                        className="form-control"
-                        onChange={handleChange}
-                        type="textarea"
-                        value={card.front}
-                    />
-                </div>
-                <div className="form-group">
-                    <label>Back</label>
-                    <textarea
-                        id="back"
-                        name="back"
-                        className="form-control"
-                        onChange={handleChange}
-                        type="textarea"
-                        value={card.back}
-                    />
-                </div>
-                <button
-                    className="btn btn-secondary mr-2"
-                    onClick={() => handleCancel()}
-                >
-                    Cancel
-                </button>
-                <button className="btn btn-primary" type="submit">
-                    Save
-                </button>
-            </form>
+            <Form isNewCard={isNewCard} deck={deck} handleSubmitClick={handleSubmit} handleChange={handleChange} newCard={card} handleShow={handleCancel}></Form>
         </div>
     );
 }
