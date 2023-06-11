@@ -4,72 +4,75 @@ import { Link, useHistory, useParams } from "react-router-dom";
 import Form from "./Form";
 
 function AddCard() {
-    const { deckId } = useParams();
-    const history = useHistory();
-    const isNewCard = true;
+  const { deckId } = useParams();
+  const history = useHistory();
+  const isNewCard = true;
 
-    const setup = {
-        front: "",
-        back: "",
-    };
+  const setup = {
+    front: "",
+    back: "",
+  };
 
-    const [newCard, setNewCard] = useState(setup);
-    const [deck, setDeck] = useState({});
+  const [newCard, setNewCard] = useState(setup);
+  const [deck, setDeck] = useState({});
 
-    useEffect(() => {
-        async function fetchData() {
-            const abortController = new AbortController();
-            try {
-                const response = await readDeck(deckId, abortController.signal);
-                setDeck(response);
-            } catch (error) {
-                console.error("Something went wrong", error);
-            }
-            return () => {
-                abortController.abort();
-            };
-        }
-        fetchData();
-    }, [deckId]);
-
-    function handleChange({ target }) {
-        setNewCard({
-            ...newCard,
-            [target.name]: target.value,
-        });
+  useEffect(() => {
+    async function fetchData() {
+      const abortController = new AbortController();
+      try {
+        const response = await readDeck(deckId, abortController.signal);
+        setDeck(response);
+      } catch (error) {
+        console.error("Something went wrong", error);
+      }
+      return () => {
+        abortController.abort();
+      };
     }
+    fetchData();
+  }, [deckId]);
 
-    async function handleSubmit(event) {
-        event.preventDefault();
-        const abortController = new AbortController();
-        const response = await createCard(
-            deckId,
-            { ...newCard },
-            abortController.signal
-        );
-        history.go("/");
-        setNewCard(setup);
-        return response;
-    }
+  function handleChange({ target }) {
+    setNewCard({
+      ...newCard,
+      [target.name]: target.value,
+    });
+  }
 
-    async function handleDone() {
-        history.push(`/decks/${deckId}`);
-    }
+  async function handleSubmit(event) {
+    event.preventDefault();
+    const abortController = new AbortController();
+    const response = await createCard(deckId, { ...newCard }, abortController.signal);
+    history.go("/");
+    setNewCard(setup);
+    return response;
+  }
 
-    return (
-        <div>
-            <ol className="breadcrumb">
-                <li className="breadcrumb-item">
-                    <Link to="/">Home</Link>
-                </li>
-                <li className="breadcrumb-item">
-                    <Link to={`/decks/${deckId}`}>{deck.name}</Link>
-                </li>
-                <li className="breadcrumb-item active">Add Card</li>
-            </ol>
-            <Form isNewCard={isNewCard} deck={deck} handleSubmitClick={handleSubmit} handleChange={handleChange} newCard={newCard} handleShow={handleDone}></Form>
-        </div>
-    );
+  async function handleDone() {
+    history.push(`/decks/${deckId}`);
+  }
+
+  return (
+    <div>
+      <ol className="breadcrumb">
+        <li className="breadcrumb-item">
+          <Link to="/">Home</Link>
+        </li>
+        <li className="breadcrumb-item">
+          <Link to={`/decks/${deckId}`}>{deck.name}</Link>
+        </li>
+        <li className="breadcrumb-item active">Add Card</li>
+      </ol>
+      <Form
+        isNewCard={isNewCard}
+        deck={deck}
+        handleSubmitClick={handleSubmit}
+        handleChange={handleChange}
+        newCard={newCard}
+        handleShow={handleDone}
+      ></Form>
+    </div>
+  );
 }
 
 export default AddCard;
